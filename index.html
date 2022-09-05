@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Page Title</title>
+    <title>Page Title</title>
+    <script>
+        function changeMovie() {
+            document.getElementById("moviePoster").src = "noMovie.jpg";
+        }
+
+        function apiCall() {
+            const userAction = async () => {
+                const response = await fetch('http://services.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item=999');
+                const myJson = await response.json(); //extract JSON from the http response
+                // do something with myJson
+                document.getElementById("test").innerHTML = myJson;
+            }
+        }
+    </script>
 </head>
+
 <body>
-
-<img id="moviePoster" src="testMovie.jpg" alt="movieName">
-<button type="button" onclick='document.getElementById("moviePoster").src="noMovie.jpg"'>New Movie</button>
-
+    <p id="test">TEMP</p>
+    <img id="moviePoster" src="testMovie.jpg" alt="movieName">
+    <button type="button" onclick="changeMovie()">New Movie</button>
+    <button type="button" onclick="apiCall()">API Call</button>
 </body>
+
 </html>
