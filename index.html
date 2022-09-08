@@ -2,29 +2,25 @@
 <html>
 
 <head>
-    <title>Page Title</title>
+    <title>Breaking Bad Quotes</title>
     <script>
-        function changeMovie() {
-            document.getElementById("moviePoster").src = "noMovie.jpg";
-        }
-
-        function apiCall() {
-            document.getElementById("test").innerHTML = "myJson";
-            ///const userAction = async () => {
-                //const response = await fetch('http://services.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item=4151');
-                //const myJson = await response.json(); //extract JSON from the http response
-                // do something with myJson
-                ///document.getElementById("test").innerHTML = "myJson";
-            ///}
+        async function testAPI() {
+            let obj;
+            const res = await fetch("https://api.breakingbadquotes.xyz/v1/quotes")
+            obj = await res.json();
+            document.getElementById('image').src = obj[0].author + ".png";
+            document.getElementById('quote').innerHTML = obj[0].author + ": " + obj[0].quote;
+            document.getElementById('image').height = "300";
+            document.getElementById('image').width = "300";
+            console.log(obj[0])
         }
     </script>
 </head>
 
 <body>
-    <p id="test">TEMP</p>
-    <img id="moviePoster" src="testMovie.jpg" alt="movieName">
-    <button type="button" onclick="changeMovie()">New Movie</button>
-    <button type="button" onclick="apiCall()">API Call</button>
+    <img id="image" src="BreakingBad.png" alt="movieName" width="300" height="300">
+    <p id="quote"></p>
+    <button type="button" onclick="testAPI()">Get Quote</button>
 </body>
 
 </html>
