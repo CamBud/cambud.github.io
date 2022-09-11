@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="test.css">
+    <title>Screen Color</title>
+    <script>
+        function changeColor() {
+            document.getElementById("bodyID").style.backgroundColor = document.getElementById("colorPicker").value
+        }
+    </script>
+</head>
+
+<body id="bodyID" style="background-color: #fa88bc;">
+    <input type="color" class="colorPicker" id="colorPicker" value="#fa88bc" oninput="changeColor()">
+    <script>
+    </script>
+</body>
+
+</html>
