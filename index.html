@@ -7,11 +7,23 @@
         function newPage(myURL) {
             window.location.href = myURL
         }
+
+        function updateTime() {
+            let timeSpent = new Date().getTime() - dayTime;
+            document.getElementById('dateTime').innerHTML = "You've been browsing the site for: " + Math.floor(timeSpent / 1000) + " seconds.";
+        }
     </script>
 </head>
 
 <body>
+    <p id="dateTime">You've been browsing the site for: 0 seconds.</p>
+    <script>
+        let dayTime = new Date().getTime();
+        setInterval(updateTime, 1000)
+    </script>
+    <button type="button" onclick="updateTime()">Update Time</button>
     <button type="button" onclick="newPage('BBQuotes/bbQuotes.html')">Breaking Bad Quotes</button>
+    <button type="button" onclick="newPage('screenColor/screenColor.html')">Screen Color</button>
 </body>
 
 </html>
