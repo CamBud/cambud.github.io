@@ -2,28 +2,64 @@
 <html>
 
 <head>
-    <title>CamBud GitHub Page</title>
+    <link rel="stylesheet" href="styling.css">
+    <title>Screen Color</title>
     <script>
-        function newPage(myURL) {
-            window.location.href = myURL
+        let policeCounter = 0;
+        function changeColor() {
+            document.getElementById("bodyID").style.backgroundColor = document.getElementById("colorPicker").value;
+            document.getElementById("colorCode").innerHTML = document.getElementById("colorPicker").value;
         }
-
-        function updateTime() {
-            let timeSpent = new Date().getTime() - dayTime;
-            document.getElementById('dateTime').innerHTML = "You've been browsing the site for: " + Math.floor(timeSpent / 1000) + " seconds.";
+        function changePreset(hexColor) {
+            document.getElementById("bodyID").style.backgroundColor = hexColor;
+        }
+        function hideButtons() {
+            document.getElementById("buttonGroup").hidden = true;
+        }
+        function policeScreen() {
+            switch (policeCounter) {
+                case 0:
+                    document.getElementById("bodyID").style.backgroundColor = "#2500E0";
+                    break;
+                case 1:
+                    document.getElementById("bodyID").style.backgroundColor = "#4A53E1";
+                    break;
+                case 2:
+                    document.getElementById("bodyID").style.backgroundColor = "#FF6170";
+                    break;
+                case 3:
+                    document.getElementById("bodyID").style.backgroundColor = "#E31E33";
+                    break;
+                case 4:
+                    document.getElementById("bodyID").style.backgroundColor = "#FF6170";
+                    break;
+                case 5:
+                    document.getElementById("bodyID").style.backgroundColor = "#4A53E1";
+                    break;
+            }
+            policeCounter++
+            if (policeCounter >= 6) {
+                policeCounter = 0
+            }
         }
     </script>
 </head>
 
-<body>
-    <p id="dateTime">You've been browsing the site for: 0 seconds.</p>
+<body id="bodyID" style="background-color: #000000;">
+    <p id="colorCode"></p>
+    <div id="buttonGroup">
+        <input type="color" class="colorPicker" id="colorPicker" value="#000000" oninput="changeColor()">
+        <button id="greenScreenButton" class="greenScreenButton"
+            onclick="changePreset('#00b140')">Green<br>Screen</button>
+        <button id="blueScreenButton" class="blueScreenButton" onclick="changePreset('#0047bb')">Blue<br>Screen</button>
+        <button id="greyScreenButton" class="greyScreenButton" onclick="changePreset('#767676')">18%<br>Grey</button>
+        <button id="policeScreenButton" class="policeScreenButton"
+            onclick="setInterval(policeScreen, 225)">Police<br>Screen</button>
+        <button id="hideButton" onclick="hideButtons()">Hide<br>Buttons</button>
+    </div>
+
     <script>
-        let dayTime = new Date().getTime();
-        setInterval(updateTime, 1000)
     </script>
-    <button type="button" onclick="updateTime()">Update Time</button>
-    <button type="button" onclick="newPage('BBQuotes/bbQuotes.html')">Breaking Bad Quotes</button>
-    <button type="button" onclick="newPage('screenColor/screenColor.html')">Screen Color</button>
 </body>
 
 </html>
