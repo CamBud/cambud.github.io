@@ -1,0 +1,23 @@
+.colorPicker {
+    border: none;
+    padding: none;
+    background: none;
+}
+
+.greenScreenButton {
+    background-color: #00b140;
+}
+
+.blueScreenButton {
+    background-color: #0047bb;
+}
+
+.greyScreenButton {
+    background-color: #767676;
+}
+
+.policeScreenButton {
+    color: #FFFFFF;
+    background-color: #0047bb;
+    border-color: #E31E33;
+}
