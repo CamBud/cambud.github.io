@@ -7,19 +7,14 @@
     <script>
         function changeColor() {
             document.getElementById("bodyID").style.backgroundColor = document.getElementById("colorPicker").value;
-            document.getElementById("colorCode").innerHTML = document.getElementById("colorPicker").value;
         }
     </script>
 </head>
 
 <body id="bodyID" style="background-color: #000000;">
-    <p id="colorCode"></p>
     <div id="buttonGroup">
         <input type="color" class="colorPicker" id="colorPicker" value="#000000" oninput="changeColor()">
     </div>
-
-    <script>
-    </script>
 </body>
-
+    
 </html>
